@@ -37,7 +37,7 @@ Where <delta> is you time-step size (i.e., 0.1)
 
 /*************************************************/
 
-Each input field has a label to espain its meaning
+Each input field has a label to explain its meaning
 
 number-of-young  -> initial population of young 
 people (with delta1 death rate). Equally divided 
