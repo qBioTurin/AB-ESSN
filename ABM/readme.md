@@ -13,12 +13,14 @@ to establish the initial conditions (i.e. grid size,
 populations, rates etc.)
 
 /*************************************************/
+
 Tho plots are represented into the interface.
 The first plots population vs tick (or event). 
 The second one shows the population vs real (calculated) time 
 (see. the paper for more details on how this is calculated)
 
 /*************************************************/
+
 Each simulation saves a <seed>.csv file (with the results 
 obtained at time 0, 1, ... up to endtime).
 If you with to change this to have more granularity, 
@@ -34,6 +36,7 @@ to
 Where <delta> is you time-step size (i.e., 0.1)
 
 /*************************************************/
+
 Each input field has a label to espain its meaning
 
 number-of-young  -> initial population of young 
@@ -81,6 +84,7 @@ Rho -> Recovery rate. Rate for infected people
 to recover from the disease and become recovered.
 
 /*************************************************/
+
 If you want tu execute multiple simulations at a time you 
 can try the "behaviorspace" functionality from the "tools"
 menu, where you wil find two pre-defined experiments.
