@@ -1,0 +1,6 @@
+i; init; init_generation; S = rep(0,3); W= rep(0,3); NamesRDS = "/home/docker/data/Input/NAMES.RDS"
+g; BirthS; 0.0
+g; BirthW; 0.0
+p; DeathS; 0.05
+p; DeathW; 0.04
+p; Move; 0.075
