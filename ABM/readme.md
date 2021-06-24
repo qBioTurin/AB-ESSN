@@ -33,7 +33,7 @@ to
 
     set counter  precision (counter + <delta>) 3
 
-Where <delta> is you time-step size (i.e., 0.1)
+Where "<delta>" is you time-step size (i.e., 0.1)
 
 /*************************************************/
 
