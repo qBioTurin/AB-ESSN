@@ -1,7 +1,7 @@
 library(epimod)
 #setwd("~/GIT/ModelliEpimod/PNvsMA/LotkaVolterra/")
 #library(devtools)
-#install_github("https://github.com/qBioTurin/epimod", ref="DiscreteEvents")
+#install_github("https://github.com/qBioTurin/epimod")
 timeList<- list()
 k<-1
 
@@ -48,43 +48,3 @@ df<-data.frame(NumberOfPositions = c(5,10,20,25),
            SimulationTime = times$end.time - times$start2 )
 save(df,file = "Times.RData")
 
-
-timeList<- list()
-k=1
-for(j in c("","2000","4000","8000")){
-    i = "SEIRS_5"
-    source("Input/names.R")
-    start2 <- Sys.time()
-    
-    model_analysis(out_fname = "model_analysis",
-                   solver_fname = paste0(i,".solver"),
-                   f_time = 20,
-                   s_time = 1,
-                   solver_type = "SSA",
-                   n_run = 1000,
-                   parallel_processors = 15,
-                   parameters_fname = paste0("Input/Functions_list",j,".csv"),
-                   functions_fname = "Rfunction/Functions.R"
-    )
-    
-    end.time<- Sys.time() 
-    
-    folder = paste0("ModelAnalysisNumZones",i,"Pop",j)
-    if(file.exists(folder)) {
-      system(paste('rm -rd ', sprintf(folder)) )
-    }
-    system(paste('mv', 
-                 sprintf("results_model_analysis"),
-                 sprintf(folder)) )
-    
-    timeList[[k]]<-data.frame(start2=start2,end.time = end.time)
-    k=k+1
-  
-}
-
-  times<-do.call("rbind",timeList)
-  
-  dfPop<-data.frame(NumberOfPoP = c(1000,2000,4000,8000),
-                 SimulationTime = times$end.time - times$start2 )
-
-  save(dfPop,file = "TimesPop.RData")
