@@ -1,0 +1,9 @@
+i; init; InitGeneration; n_file="/home/docker/data/Input/NAMES.RDS"
+c; NewN; 0.2
+g; alpha3; 0.0033
+g; alpha4; 0.21
+g; alpha2; 0.01269
+g; alpha7; 0.095
+g; k1; 1
+g; k2; 0.1
+g; k3; 5

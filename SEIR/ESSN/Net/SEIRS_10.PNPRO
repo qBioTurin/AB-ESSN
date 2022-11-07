@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="COVID-19" version="121">
+  <gspn name="COVID-19" show-fluid-cmd="false" view-rates="false">
+    <nodes>
+      <place domain="AxZ" label-x="-1.5" label-y="-1.5" name="S" x="9.0" y="19.0"/>
+      <place domain="AxZ" label-x="-1.5" label-y="-1.5" name="E" x="19.0" y="19.0"/>
+      <place domain="AxZ" label-x="-1.5" label-y="-1.5" name="I" x="41.0" y="19.0"/>
+      <place domain="AxZ" name="R" x="56.0" y="19.0"/>
+      <place domain="Age" name="D" x="56.0" y="14.0"/>
+      <place domain="AxZ" label-x="-1.0" name="c_E" x="18.0" y="10.0"/>
+      <transition delay="infection" name="Infection" nservers-x="0.5" type="EXP" x="24.55" y="14.0"/>
+      <transition delay="mu" delay-y="0.5" name="EndIncubation" nservers-x="0.5" type="EXP" x="30.55" y="19.0"/>
+      <transition delay="rho" label-y="1.5" name="Recovery" nservers-x="0.5" type="EXP" x="51.55" y="19.0"/>
+      <transition delay="If[inf in A0, delta0, If[inf in A1 , delta1, If[inf in A2, delta2, 0]]]" delay-x="-7.5" delay-y="-1.5" label-y="1.5" name="Death" nservers-x="0.5" type="EXP" x="51.55" y="14.0"/>
+      <text-box bold="true" border-color="#ffbf00" fill-color="none" height="28.0" horiz-pos="2" locked="true" name="__textBox0" shadow="true" shape="ROUND_RECTANGLE" text-color="#000000" text-size="HEADER1" vert-pos="3" width="21.5" x="27.5" y="9.5">Infected</text-box>
+      <color-class definition="{a0} is A0 + {a1} is A1 + {a2} is A2 " name="Age" x="6.375" y="4.875"/>
+      <color-class definition="z{1..1} is Z1 + z{2..2} is Z2 + z{3..3} is Z3 +z{4..4} is Z4 + z{5..5} is Z5 + z{6..6} is Z6+ z{7..7} is Z7 +z{8..8} is Z8 + z{9..9} is Z9 +z{10..10} is Z10" name="Zones" x="6.3125" y="3.375"/>
+      <color-class definition="Age*Zones" name="AxZ" x="6.25" y="2.0"/>
+      <color-var domain="Age" name="inf" x="47.625" y="4.0"/>
+      <color-var domain="Zones" name="pos" x="39.4375" y="3.0"/>
+      <constant consttype="REAL" name="delta1" value="0.01" x="73.0" y="13.0"/>
+      <constant consttype="REAL" name="rho" value="0.125" x="69.25" y="18.0"/>
+      <color-var domain="Age" name="sus" x="47.4375" y="3.0"/>
+      <constant consttype="REAL" name="delta2" value="0.2" x="78.0" y="13.0"/>
+      <constant consttype="REAL" name="delta0" value="0.001" x="68.0" y="13.0"/>
+      <transition delay="phi" name="H" nservers-x="0.5" type="EXP" x="32.55" y="32.0"/>
+      <constant consttype="REAL" name="phi" value="0.01" x="76.1875" y="18.0"/>
+      <constant consttype="REAL" name="mu" value="0.2" x="77.1875" y="21.0"/>
+      <text-box bold="true" border-color="#107f00" fill-color="none" height="28.0" horiz-pos="2" locked="true" name="copy___textBox0" shadow="true" shape="ROUND_RECTANGLE" text-color="#000000" text-size="HEADER1" vert-pos="3" width="11.25" x="16.0" y="9.375">Exposed</text-box>
+      <text-box bold="true" border-color="#00207f" fill-color="none" height="28.0" horiz-pos="2" locked="true" name="copy_copy___textBox0" shadow="true" shape="ROUND_RECTANGLE" text-color="#000000" text-size="HEADER1" vert-pos="3" width="11.25" x="4.375" y="9.25">Susceptible</text-box>
+      <text-box bold="true" border-color="#8000ff" fill-color="none" height="19.5625" horiz-pos="2" name="copy_copy_copy___textBox0" shadow="true" shape="ROUND_RECTANGLE" text-color="#000000" text-size="HEADER1" vert-pos="3" width="13.4375" x="49.28125" y="18.21875">Recovered</text-box>
+      <text-box bold="true" border-color="#7f0000" fill-color="none" height="11.1875" horiz-pos="2" name="copy_copy_copy_copy___textBox0" shadow="true" shape="ROUND_RECTANGLE" text-color="#000000" text-size="HEADER1" width="13.3125" x="49.34375" y="6.40625">Death</text-box>
+      <transition delay="move" guard="pos != posNew" label-y="2.5" name="MoveS" nservers-x="0.5" type="EXP" x="9.55" y="26.0"/>
+      <color-var domain="Zones" name="posNew" x="38.75" y="2.0"/>
+      <transition delay="move" guard="pos != posNew" label-y="2.5" name="MoveE" nservers-x="0.5" type="EXP" x="19.55" y="26.0"/>
+      <transition delay="move" guard="pos != posNew" guard-y="2.0" label-y="1.5" name="MoveI" nservers-x="0.5" type="EXP" x="41.55" y="26.0"/>
+      <constant consttype="REAL" name="infection" value="0.08" x="72.375" y="16.0"/>
+      <constant consttype="REAL" name="move" value="0.02222222" x="68.9375" y="21.0"/>
+    </nodes>
+    <edges>
+      <arc head="Infection" kind="INPUT" mult="&lt;sus,pos&gt;" mult-k="0.6198242187500002" tail="S">
+        <point x="15.0" y="15.0"/>
+      </arc>
+      <arc head="E" kind="OUTPUT" mult="&lt;sus,pos&gt;" tail="Infection"/>
+      <arc head="I" kind="OUTPUT" mult="&lt;inf,pos&gt;" mult-k="0.34541015625000004" mult-x="-0.8719726562500014" mult-y="0.77294921875" tail="Infection"/>
+      <arc head="Infection" kind="INPUT" mult="&lt;inf,pos&gt;" mult-k="1.13466796875" mult-x="-0.6796888446584148" mult-y="0.5" tail="I">
+        <point x="31.5" y="15.0"/>
+      </arc>
+      <arc head="Recovery" kind="INPUT" mult="&lt;inf,pos&gt;" tail="I"/>
+      <arc head="R" kind="OUTPUT" mult="&lt;inf,pos&gt;" mult-x="0.0" mult-y="-1.0" tail="Recovery"/>
+      <arc head="Death" kind="INPUT" mult="&lt;inf,pos&gt;" mult-k="1.0831054687500004" tail="I">
+        <point x="46.0" y="15.0"/>
+      </arc>
+      <arc head="D" kind="OUTPUT" mult="&lt;inf&gt;" tail="Death"/>
+      <arc head="EndIncubation" kind="INPUT" mult="&lt;inf,pos&gt;" mult-k="0.20341796875" tail="E"/>
+      <arc head="I" kind="OUTPUT" mult="&lt;inf,pos&gt;" mult-k="0.20322265625" mult-x="1.4677734375" mult-y="-0.5" tail="EndIncubation"/>
+      <arc head="c_E" kind="OUTPUT" mult="&lt;sus,pos&gt;" mult-k="0.6405273437500002" mult-x="1.3431640625000014" mult-y="-0.43789062499999964" tail="Infection"/>
+      <arc head="H" kind="INPUT" mult="&lt;inf,pos&gt;" tail="R">
+        <point x="47.0" y="33.0"/>
+      </arc>
+      <arc head="S" kind="OUTPUT" mult="&lt;inf,pos&gt;" mult-x="1.25" mult-y="0.6875" tail="H">
+        <point x="19.0" y="33.0"/>
+      </arc>
+      <arc head="MoveS" kind="INPUT" mult="&lt;sus,posNew&gt;" mult-x="-1.1974679171088987" mult-y="0.9159486673742379" tail="S">
+        <point x="7.5" y="24.0"/>
+      </arc>
+      <arc head="S" kind="OUTPUT" mult="&lt;sus,pos&gt;" mult-x="0.6924272125728059" mult-y="-0.430912655087365" tail="MoveS">
+        <point x="12.5" y="24.0"/>
+      </arc>
+      <arc head="MoveE" kind="INPUT" mult="&lt;sus,posNew&gt;" mult-x="-1.1974679171088987" mult-y="0.9159486673742379" tail="E">
+        <point x="18.0" y="23.5"/>
+      </arc>
+      <arc head="E" kind="OUTPUT" mult="&lt;sus,pos&gt;" mult-x="0.6730107802778242" mult-y="0.06159137577774132" tail="MoveE">
+        <point x="22.0" y="23.5"/>
+      </arc>
+      <arc head="MoveI" kind="INPUT" mult="&lt;sus,posNew&gt;" mult-x="-1.1974679171088987" mult-y="0.9159486673742379" tail="I">
+        <point x="40.5" y="23.5"/>
+      </arc>
+      <arc head="I" kind="OUTPUT" mult="&lt;sus,pos&gt;" mult-x="0.4444696171418627" mult-y="-0.15282182999826333" tail="MoveI">
+        <point x="44.0" y="23.5"/>
+      </arc>
+    </edges>
+  </gspn>
+</project>
