@@ -20,7 +20,7 @@ obtained using the ABM are reported.
 
 ## Melanoma model
 
-<img src="./Melanoma/Plots/MelanomaModel.png" alt="Fig.1) Composed model of Immune system and Melanoma cells behavior."  />
+<img src="./Melanoma/SSA/Plots/MelanomaModel.png" alt="Fig.1) Composed model of Immune system and Melanoma cells behavior."  />
 <p class="caption">
 Fig.1) AB-ESSN composed model of Immune system and Melanoma cells behavior.
 </p>
