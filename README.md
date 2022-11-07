@@ -8,8 +8,7 @@ We exploit the framework, called GreatMod, developed by [q-Bio group](https://ww
 
 ## SEIR model 
 
-
-### ESSN folder
+### SSA folder
 
 In this folder all the files necessary to reproduce the simulation of the SEIRS model are reported. 
 In the *main.R* file all the steps to run the SSA algorithm to simulate the model are reported, while in *Plot&Test.R* the commands to generate the images and to run the statistical tests are reported.
@@ -21,11 +20,18 @@ obtained using the ABM are reported.
 
 ## Melanoma model
 
+<img src="Plots/MelanomaModel.png" alt="Fig.1) Composed model of Immune system and Melanoma cells behavior."  />
+<p class="caption">
+Fig.1) AB-ESSN composed model of Immune system and Melanoma cells behavior.
+</p>
+
 This case study is inspired by the ordinary differential equations (ODEs) model presented in this [work](https://pubmed.ncbi.nlm.nih.gov/22701144/).
 Such model reproduced the immune response stimulated by OT1 activated cytotoxic T cells with Anti-CD 137 immunostimulatory monoclonal antibodies against melanoma,  one of the most aggressive malignant tumors.
 
-### ESSN folder
+The composed, decolored models and the subnets necessary for the composition are all stored in the PNPRO file in *Melanoma/SSA/Net* folder.
 
+### SSA folder
 
+In the *Main.R* file all the steps to run the SSA algorithm starting from the decolored model are reported, while in *Rfunction/PlotsGeneration.R* it is possible to find the functions to generate the images.
 
 ### ABM folder
