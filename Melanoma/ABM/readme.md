@@ -74,7 +74,7 @@ This model also includes inital conditions for vaccinations in the "setup" proce
 
 /*************************************************/
 
-Tho plots are already represented into the interface. They show the sub_populations number (one for each place) vs time
+Tho plots are already represented into the interface. They show the sub_populations number (one for each place) vs time. In principle it also is possible to use the export-plots NetLogo procedure from the command center or within the code befor the stop condition to save results into specific csv files.
 
 
 /*************************************************/
