@@ -43,6 +43,7 @@ The generated model (SEIRS_composed.nlogo) can be thus directly loaded within Ne
 Furthermore, the variable counter has been added among the global variables.
 
 Finally, to enable printing, the following code lines must been uncommented (remove the ";").
+
     ;if ticks = 0 [reset-timer open-file ]
     if STOPTIME > 0 AND time > STOPTIME [ 
         ;close-file  
