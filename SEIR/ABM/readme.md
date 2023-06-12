@@ -14,7 +14,9 @@ To obtain the netlogo model select this last network and then do: "File->Export-
 The generated model (SEIRS_composed.nlogo) can be thus directly loaded within NetLogo. The model already include plots. However reporting functions for storing data into csv files is not implemented yet. For such reason we also manually included  the required modifications to store presented results into .csv files. Such functions  have manually been added at the end of the netlogo code:
     
 ;;****
+
 ;; auxiliary procedures for results reporting
+
 ;;****
 
 to open-file
@@ -51,8 +53,9 @@ if STOPTIME > 0 AND time > STOPTIME [
  ;   set counter (precision (counter + 0.1) 3)
  ;]
   
-    
-The manual modifications for file saving allow to produce a <seed>.csv file (with the results  obtained at time 0, 1, ... up to endtime).
+/*************************************************/
+   
+The manual modifications for file saving allow to produce a <seed>.csv file (with the results  obtained at time 0.1, 0.2, ... up to endtime or stop by user).
 Once the model is loaded, you can run the simulation with the "go" button.
 
 /*************************************************/
