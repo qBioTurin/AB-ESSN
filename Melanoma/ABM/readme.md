@@ -10,9 +10,9 @@ To produce the model from the ESSN net you need greatSPN3: https://github.com/gr
 The starting point is represented by the Melanoma_nlogo.PNPRO file. In this file various subnets representing the involved agent types are presented (Ccells, ABandAscells, EandEscells, Ncells, Agcells). Then, the composition tab shows how composition has been exploited on tagged transitions using a unary conjucated policy to obtain the composed Melanoma model, that has been duplicated for editing in the tab Melanoma. This net considers as intitial marking only 3 Ccells and the Env meta-agent.
 /*************************************************/
 
-The generated model can be thus directly loaded within NetLogo. This model already include plots. However reporting functions for storing data into csv files is not implemented yet. For such reason we also manually included the required modifications to store presented results into .csv files. See SEIRS Example to exactly know which modification have been done to the file in order to obtain csv output.
+The generated model can be thus directly loaded within NetLogo. This model already include plots. However reporting functions for storing data into csv files is not implemented yet. For such reason we also manually included the required modifications. See the SEIRS Example to exactly know which modifications have been done to the file in order to obtain csv output.
 
-Furthermore, as GreatSPN does not automatically manage general functions and read arcs related to general functions, these have been manually added within the NetLogo code and are presented into the file Melanoma_netlogo.netlogo. This model also include inital conditions for vaccinations in the "setup" procedure, and correct rule rates as presented in the article.
+Furthermore, as GreatSPN does not automatically manage general functions and read arcs related to general functions, these have been manually added within the NetLogo code and are presented into the file Melanoma_netlogo.netlogo. This model also includes inital conditions for vaccinations in the "setup" procedure, and rule rates as presented in the article.
 
 For example, for transition Ckill that both includes general functions according to Michaelis-Menten kinetics, as well as read arcs we have modified the code in two points, for rate calculation and rule execution, as follows:
 
