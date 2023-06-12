@@ -910,11 +910,18 @@ true
 true
 "" ""
 PENS
-"Ecells" 1.0 0 -8053223 true "" "plotxy time (count Ecells with [place = Es])"
-"ABB" 1.0 0 -16728065 true "" "plotxy time (count ABB with [place = As])"
-"Ccells" 1.0 0 -13840069 true "" "plotxy time (count Ccells)"
+"Ecells" 1.0 0 -10185235 true "" "plotxy time (count Ecells)"
+"Ecells_Einj" 1.0 0 -8388608 true "" "plotxy time (count Ecells with [Place = Einj])"
+"Ecells_Etravel" 1.0 0 -29696 true "" "plotxy time (count Ecells with [Place = Etravel])"
+"Ecells_Es" 1.0 0 -65536 true "" "plotxy time (count Ecells with [Place = Es])"
+"ABB" 1.0 0 -16728065 true "" "plotxy time (count ABB)"
+"ABB_Ab" 1.0 0 -8388608 true "" "plotxy time (count ABB with [Place = Ab])"
+"ABB_Abtravel" 1.0 0 -29696 true "" "plotxy time (count ABB with [Place = Abtravel])"
+"ABB_As" 1.0 0 -65536 true "" "plotxy time (count ABB with [Place = As])"
+"Ccells" 1.0 0 -5383962 true "" "plotxy time (count Ccells)"
 "Ncells" 1.0 0 -14774017 true "" "plotxy time (count Ncells)"
 "AGG" 1.0 0 -15132304 true "" "plotxy time (count AGG)"
+"ENV" 1.0 0 -16711681 true "" "plotxy time (count ENV)"
 
 INPUTBOX
 17
@@ -1284,6 +1291,17 @@ NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
+<experiments>
+  <experiment name="experiment" repetitions="1" runMetricsEveryStep="true">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>count turtles</metric>
+    <steppedValueSet variable="SEED" first="0" step="1" last="99"/>
+    <enumeratedValueSet variable="STOPTIME">
+      <value value="20"/>
+    </enumeratedValueSet>
+  </experiment>
+</experiments>
 @#$#@#$#@
 @#$#@#$#@
 default
