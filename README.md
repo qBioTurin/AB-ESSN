@@ -4,14 +4,17 @@ In  this  github page we show how the **GreatMod** framework can be efficiently 
 1. using the AB-ESSN translation for the realization of  computational epidemiology model;
 2. exploiting a compositional approach for the definition of a computational immunology model.
 
-We exploit the framework, called GreatMod, developed by [q-Bio group](https://www.cs.unito.it/do/gruppi.pl/Show?_id=lxu3) for  the  analysis  of  biological  and  epidemiological  systems. All the details regarding the framework, and the R package *epimod*, can be found at the following link: [GreatMod](https://qbioturin.github.io/epimod/).
+We exploit the framework, called GreatMod, developed by [q-Bio group](https://qbio.di.unito.it/) for  the  analysis  of  biological  and  epidemiological  systems. All the details regarding the framework, and the R package *epimod*, can be found at the following link: [GreatMod](https://qbioturin.github.io/epimod/). 
+In particular, the installation of the workflow and the opening of the Petri Net models requires the downloading of the last version of the [GreatSPN](https://github.com/greatspn/SOURCES/blob/master/docs/INSTALL.md) editor.
 
 ## SEIR model 
 
 ### SSA folder
 
-In this folder all the files necessary to reproduce the simulation of the SEIRS model are reported. 
-In the *main.R* file all the steps to run the SSA algorithm to simulate the model are reported, while in *Plot&Test.R* the commands to generate the images and to run the statistical tests are reported.
+In this folder all the files necessary to reproduce the simulation of the SEIRS model are reported:
+  
+  1. the *main.R* file reports all the steps to run the SSA algorithm to simulate the model, 
+  2. the *Plot&Test.R* reports the commands to generate the images and to run the statistical tests.
 
 ### ABM folder
 
