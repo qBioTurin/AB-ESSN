@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="ModelloMelanoma" version="121">
+  <gspn name="Agcells" show-fluid-cmd="false">
+    <nodes>
+      <place domain="AGG" label-y="-2.0" name="Ag" x="30.0" y="37.0"/>
+      <transition delay="alpha6" delay-x="-2.5" label-y="-2.0" name="growEs" nservers-x="0.5" rotation="1.5707963267948966" superpos-x="3.0" superpos-y="0.0" superposition-tags="helpAg?" type="EXP" x="30.55" y="44.0"/>
+      <transition delay="alpha4" label-y="-2.0" name="Ckill2" nservers-x="0.5" superposition-tags="killC2b?" type="EXP" x="24.55" y="37.0"/>
+      <transition name="Agkill" nservers-x="0.5" type="EXP" x="35.55" y="37.0"/>
+      <color-class definition="agent e{1..100}" name="Ecells" x="3.0" y="3.0"/>
+      <constant consttype="REAL" name="alpha11" value="1.0" x="46.0625" y="13.0"/>
+      <constant consttype="REAL" name="unosuTau" value="1.0" x="45.8125" y="15.0"/>
+      <color-class definition="agent ab{1..100}" name="AB" x="15.0" y="3.0"/>
+      <color-class definition="agent c{1..100}" name="Ccells" x="27.6875" y="3.0"/>
+      <color-class definition="agent Ncells{1..100}" name="Ncells" x="39.625" y="3.0"/>
+      <color-class definition="agent ag{1..3}" name="AGG" x="54.3125" y="3.0"/>
+      <constant consttype="REAL" name="alpha8" value="1.0" x="45.75" y="17.0"/>
+      <constant consttype="REAL" name="alpha10" value="1.0" x="45.75" y="19.0"/>
+      <color-var domain="Ecells" name="xe" x="3.0625" y="5.0"/>
+      <color-var domain="AB" name="xab" x="13.0625" y="5.0"/>
+      <color-var domain="Ccells" name="xc" x="23.0625" y="5.0"/>
+      <color-var domain="Ncells" name="xn" x="32.0625" y="5.0"/>
+      <color-var domain="AGG" name="xag" x="45.0625" y="5.0"/>
+      <color-var domain="Ccells" name="xc2" x="23.0625" y="7.0"/>
+      <constant consttype="REAL" name="alpha3" value="1.0" x="45.75" y="22.0"/>
+      <constant consttype="REAL" name="alpha1" value="1.0" x="45.75" y="24.0"/>
+      <constant consttype="REAL" name="alpha2" value="1.0" x="45.75" y="26.0"/>
+      <color-var domain="Ncells" name="xn2" x="32.0625" y="7.0"/>
+      <constant consttype="REAL" name="h" value="0.0" x="45.75" y="29.0"/>
+      <constant consttype="REAL" name="alpha6" value="1.0" x="45.75" y="28.0"/>
+      <constant consttype="REAL" name="alpha4" value="1.0" x="45.75" y="31.0"/>
+      <color-var domain="Ecells" name="xe1" x="2.5625" y="7.0"/>
+      <constant consttype="REAL" name="unosuTinj" value="0.0" x="46.75" y="10.0"/>
+      <color-class definition="agent env{1..1}" name="ENV" x="2.125" y="9.0"/>
+      <color-var domain="ENV" name="xenv" x="2.9375" y="11.0"/>
+      <constant consttype="REAL" name="alpha5" value="0.0" x="55.0625" y="32.0"/>
+      <constant consttype="REAL" name="alpha9" value="1.0" x="53.9375" y="19.0"/>
+      <constant consttype="REAL" name="alpha7" value="1.0" x="55.9375" y="21.0"/>
+    </nodes>
+    <edges>
+      <arc head="growEs" kind="INPUT" mult="&lt;xag&gt;" mult-x="1.5" mult-y="0.0" tail="Ag"/>
+      <arc head="Ag" kind="OUTPUT" mult="&lt;xag&gt;" tail="Ckill2">
+        <point x="27.5" y="38.0"/>
+      </arc>
+      <arc head="Agkill" kind="INPUT" mult="&lt;xag&gt;" tail="Ag"/>
+    </edges>
+  </gspn>
+  <gspn name="EandEsCells" show-fluid-cmd="false" zoom="75">
+    <nodes>
+      <place domain="Ecells" name="Etravel" x="9.0" y="19.0"/>
+      <place domain="Ecells" label-x="-4.5" label-y="-0.5" name="Es" x="9.0" y="26.0"/>
+      <transition delay="unosuTau" delay-x="-2.0" delay-y="-1.5" label-x="-1.0" label-y="-1.0" name="Delay" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="9.55" y="23.0"/>
+      <transition delay="alpha8" name="Esdeath" nservers-x="0.5" type="EXP" x="17.55" y="24.0"/>
+      <transition delay="alpha3" label-y="-2.0" name="Ckill" nservers-x="0.5" superposition-tags="killC1" type="EXP" x="17.55" y="30.0"/>
+      <transition delay="alpha6" delay-x="-2.5" label-x="4.5" label-y="-2.5" name="growEs" nservers-x="0.5" rotation="1.5707963267948966" superpos-x="2.5" superpos-y="-1.0" superposition-tags="changeNEs?" type="EXP" x="1.55" y="34.0"/>
+      <transition delay="alpha4" label-y="-2.0" name="Ckill2" nservers-x="0.5" superposition-tags="killC2a|killC2b" type="EXP" x="17.55" y="34.0"/>
+      <transition delay="alpha9" name="EskillsAs" nservers-x="0.5" superposition-tags="killAs" type="EXP" x="17.55" y="20.0"/>
+      <transition delay="alpha7" name="Esdup" nservers-x="0.5" superpos-x="1.0" superpos-y="-3.5" superposition-tags="birthEs|bornEs" type="EXP" x="1.55" y="26.0"/>
+      <place domain="Ecells" name="Einj" x="9.0" y="10.0"/>
+      <transition delay="alpha11" label-x="-3.0" label-y="-1.0" name="Emigration" nservers-x="0.5" rotation="1.5707963267948966" superpos-x="2.5" superpos-y="0.0" type="EXP" x="9.55" y="15.0"/>
+      <transition delay="alpha8" name="Edeath" nservers-x="0.5" type="EXP" x="14.55" y="10.0"/>
+      <transition name="Esborn" nservers-x="0.5" superposition-tags="bornEs?" type="EXP" x="1.55" y="31.0"/>
+      <color-class definition="agent e{1..100}" name="Ecells" x="3.0" y="3.0"/>
+      <constant consttype="REAL" name="alpha11" value="1.0" x="46.0625" y="13.0"/>
+      <constant consttype="REAL" name="unosuTau" value="1.0" x="45.8125" y="15.0"/>
+      <color-class definition="agent ab{1..100}" name="AB" x="15.0" y="3.0"/>
+      <color-class definition="agent c{1..100}" name="Ccells" x="27.6875" y="3.0"/>
+      <color-class definition="agent Ncells{1..100}" name="Ncells" x="39.625" y="3.0"/>
+      <color-class definition="agent ag{1..3}" name="AGG" x="54.3125" y="3.0"/>
+      <constant consttype="REAL" name="alpha8" value="1.0" x="45.75" y="17.0"/>
+      <constant consttype="REAL" name="alpha10" value="1.0" x="45.75" y="19.0"/>
+      <color-var domain="Ecells" name="xe" x="3.0625" y="5.0"/>
+      <color-var domain="AB" name="xab" x="13.0625" y="5.0"/>
+      <color-var domain="Ccells" name="xc" x="23.0625" y="5.0"/>
+      <color-var domain="Ncells" name="xn" x="32.0625" y="5.0"/>
+      <color-var domain="AGG" name="xag" x="45.0625" y="5.0"/>
+      <color-var domain="Ccells" name="xc2" x="23.0625" y="7.0"/>
+      <constant consttype="REAL" name="alpha3" value="1.0" x="45.75" y="22.0"/>
+      <constant consttype="REAL" name="alpha1" value="1.0" x="45.75" y="24.0"/>
+      <constant consttype="REAL" name="alpha2" value="1.0" x="45.75" y="26.0"/>
+      <color-var domain="Ncells" name="xn2" x="32.0625" y="7.0"/>
+      <constant consttype="REAL" name="h" value="0.0" x="45.75" y="29.0"/>
+      <constant consttype="REAL" name="alpha6" value="1.0" x="45.75" y="28.0"/>
+      <constant consttype="REAL" name="alpha4" value="1.0" x="45.75" y="31.0"/>
+      <color-var domain="Ecells" name="xe1" x="2.5625" y="7.0"/>
+      <constant consttype="REAL" name="unosuTinj" value="0.0" x="46.75" y="10.0"/>
+      <color-class definition="agent env{1..1}" name="ENV" x="2.125" y="9.0"/>
+      <color-var domain="ENV" name="xenv" x="2.9375" y="11.0"/>
+      <constant consttype="REAL" name="alpha5" value="0.0" x="55.0625" y="32.0"/>
+      <constant consttype="REAL" name="alpha9" value="1.0" x="53.9375" y="19.0"/>
+      <constant consttype="REAL" name="alpha7" value="1.0" x="55.9375" y="21.0"/>
+    </nodes>
+    <edges>
+      <arc head="Delay" kind="INPUT" mult="&lt;xe&gt;" tail="Etravel"/>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;" mult-y="-0.5" tail="Delay"/>
+      <arc head="Esdeath" kind="INPUT" mult="&lt;xe&gt;" tail="Es"/>
+      <arc head="Ckill" kind="INPUT" mult="&lt;xe&gt;" mult-x="0.6459063244903724" mult-y="0.7384340360544854" tail="Es">
+        <point x="13.0" y="27.0"/>
+      </arc>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;" mult-k="1.2483398437500002" mult-x="-0.7774256604095662" mult-y="0.11934943393465858" tail="Ckill">
+        <point x="13.5" y="30.0"/>
+      </arc>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;" mult-k="0.35458984375" tail="growEs"/>
+      <arc head="Ckill2" kind="INPUT" mult="&lt;xe&gt;" tail="Es">
+        <point x="11.0" y="33.5"/>
+      </arc>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;" mult-k="1.21279296875" mult-x="-0.3081712302730537" mult-y="1.2221681363078112" tail="Ckill2">
+        <point x="10.0" y="35.0"/>
+        <point x="10.0" y="31.5"/>
+      </arc>
+      <arc head="EskillsAs" kind="INPUT" mult="&lt;xe&gt;" mult-k="0.5266601562500001" mult-x="2.0635370652296015" mult-y="-0.6049732729563573" tail="Es">
+        <point x="14.5" y="23.5"/>
+      </arc>
+      <arc head="Esdup" kind="INPUT" mult="&lt;xe&gt;" mult-k="1.04775390625" tail="Es">
+        <point x="5.0" y="24.0"/>
+      </arc>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;" mult-k="1.00107421875" tail="EskillsAs">
+        <point x="14.0" y="21.0"/>
+      </arc>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;" tail="Esdup"/>
+      <arc head="Emigration" kind="INPUT" mult="&lt;xe&gt;" tail="Einj"/>
+      <arc head="Edeath" kind="INPUT" mult="&lt;xe&gt;" tail="Einj"/>
+      <arc head="Etravel" kind="OUTPUT" mult="&lt;xe&gt;" mult-x="2.0" mult-y="0.0" tail="Emigration"/>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe1&gt;" mult-x="-1.5" mult-y="1.5" tail="Esborn"/>
+    </edges>
+  </gspn>
+  <gspn name="Ccells" show-fluid-cmd="false">
+    <nodes>
+      <place domain="Ccells" label-x="-5.0" label-y="-0.5" marking="&lt;c1&gt;+&lt;c2&gt;+&lt;c3&gt;" name="C" x="9.0" y="34.0"/>
+      <transition delay="alpha1" name="NewC_parent" nservers-x="0.5" rotation="1.5707963267948966" superposition-tags="birth" type="EXP" x="4.55" y="40.0"/>
+      <transition delay="alpha2" label-x="-2.5" label-y="0.0" name="Cdeath" nservers-x="0.5" type="EXP" x="15.55" y="36.0"/>
+      <transition delay="alpha4" label-y="-2.0" name="Ckill2" nservers-x="0.5" superposition-tags="killC2a?" type="EXP" x="15.55" y="31.0"/>
+      <transition delay="alpha3" label-y="-2.0" name="Ckill" nservers-x="0.5" superpos-y="-4.0" superposition-tags="killC1?" type="EXP" x="4.55" y="31.0"/>
+      <transition delay="alpha1" label-x="3.5" label-y="1.5" name="NewC_born" nservers-x="0.5" rotation="1.5707963267948966" superpos-y="-1.0" superposition-tags="birth?" type="EXP" x="15.55" y="40.0"/>
+      <color-class definition="agent e{1..100}" name="Ecells" x="3.0" y="3.0"/>
+      <constant consttype="REAL" name="alpha11" value="1.0" x="46.0625" y="13.0"/>
+      <constant consttype="REAL" name="unosuTau" value="1.0" x="45.8125" y="15.0"/>
+      <color-class definition="agent ab{1..100}" name="AB" x="15.0" y="3.0"/>
+      <color-class definition="agent c{1..100}" name="Ccells" x="27.6875" y="3.0"/>
+      <color-class definition="agent Ncells{1..100}" name="Ncells" x="39.625" y="3.0"/>
+      <color-class definition="agent ag{1..3}" name="AGG" x="54.3125" y="3.0"/>
+      <constant consttype="REAL" name="alpha8" value="1.0" x="45.75" y="17.0"/>
+      <constant consttype="REAL" name="alpha10" value="1.0" x="45.75" y="19.0"/>
+      <color-var domain="Ecells" name="xe" x="3.0625" y="5.0"/>
+      <color-var domain="AB" name="xab" x="13.0625" y="5.0"/>
+      <color-var domain="Ccells" name="xc" x="23.0625" y="5.0"/>
+      <color-var domain="Ncells" name="xn" x="32.0625" y="5.0"/>
+      <color-var domain="AGG" name="xag" x="45.0625" y="5.0"/>
+      <color-var domain="Ccells" name="xc2" x="23.0625" y="7.0"/>
+      <constant consttype="REAL" name="alpha3" value="1.0" x="45.75" y="22.0"/>
+      <constant consttype="REAL" name="alpha1" value="1.0" x="45.75" y="24.0"/>
+      <constant consttype="REAL" name="alpha2" value="1.0" x="45.75" y="26.0"/>
+      <color-var domain="Ncells" name="xn2" x="32.0625" y="7.0"/>
+      <constant consttype="REAL" name="h" value="0.0" x="45.75" y="29.0"/>
+      <constant consttype="REAL" name="alpha6" value="1.0" x="45.75" y="28.0"/>
+      <constant consttype="REAL" name="alpha4" value="1.0" x="45.75" y="31.0"/>
+      <color-var domain="Ecells" name="xe1" x="2.5625" y="7.0"/>
+      <constant consttype="REAL" name="unosuTinj" value="0.0" x="46.75" y="10.0"/>
+      <color-class definition="agent env{1..1}" name="ENV" x="2.125" y="9.0"/>
+      <color-var domain="ENV" name="xenv" x="2.9375" y="11.0"/>
+      <constant consttype="REAL" name="alpha5" value="0.0" x="55.0625" y="32.0"/>
+      <constant consttype="REAL" name="alpha9" value="1.0" x="53.9375" y="19.0"/>
+      <constant consttype="REAL" name="alpha7" value="1.0" x="55.9375" y="21.0"/>
+    </nodes>
+    <edges>
+      <arc head="C" kind="OUTPUT" mult="&lt;xc&gt;" mult-k="1.50009765625" mult-x="-0.48720189144736814" mult-y="1.5" tail="NewC_parent">
+        <point x="8.0" y="41.0"/>
+        <point x="10.5" y="41.0"/>
+      </arc>
+      <arc head="Cdeath" kind="INPUT" mult="&lt;xc&gt;" mult-k="0.25595703125" tail="C"/>
+      <arc head="Ckill2" kind="INPUT" mult="&lt;xc&gt;" mult-k="0.41669921875000004" tail="C"/>
+      <arc head="NewC_parent" kind="INPUT" mult="&lt;xc&gt;" mult-k="1.23193359375" tail="C">
+        <point x="8.326953125" y="37.5095703125"/>
+      </arc>
+      <arc head="Ckill" kind="INPUT" mult="&lt;xc&gt;" tail="C"/>
+      <arc head="C" kind="OUTPUT" mult="&lt;xc2&gt;" mult-k="1.0885742187500003" mult-x="2.1111406355616342" mult-y="-0.9828143476533171" tail="NewC_born">
+        <point x="11.5" y="41.0"/>
+      </arc>
+    </edges>
+  </gspn>
+  <gspn name="Ncells" show-fluid-cmd="false">
+    <nodes>
+      <place domain="Ncells" label-x="2.0" label-y="-0.5" name="N" x="41.0" y="37.0"/>
+      <transition delay="h" label-x="3.5" label-y="-1.0" name="NewN" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="41.55" y="41.0"/>
+      <place domain="ENV" label-x="8.0" label-y="0.5" marking="&lt;All&gt;" name="environment" x="47.0" y="45.0"/>
+      <transition delay="alpha6" delay-x="-2.5" label-y="-2.0" name="growEs" nservers-x="0.5" rotation="1.5707963267948966" superposition-tags="changeNEs|helpAg" type="EXP" x="35.55" y="37.0"/>
+      <color-class definition="agent e{1..100}" name="Ecells" x="3.0" y="3.0"/>
+      <constant consttype="REAL" name="alpha11" value="1.0" x="46.0625" y="13.0"/>
+      <constant consttype="REAL" name="unosuTau" value="1.0" x="45.8125" y="15.0"/>
+      <color-class definition="agent ab{1..100}" name="AB" x="15.0" y="3.0"/>
+      <color-class definition="agent c{1..100}" name="Ccells" x="27.6875" y="3.0"/>
+      <color-class definition="agent Ncells{1..100}" name="Ncells" x="39.625" y="3.0"/>
+      <color-class definition="agent ag{1..3}" name="AGG" x="54.3125" y="3.0"/>
+      <constant consttype="REAL" name="alpha8" value="1.0" x="45.75" y="17.0"/>
+      <constant consttype="REAL" name="alpha10" value="1.0" x="45.75" y="19.0"/>
+      <color-var domain="Ecells" name="xe" x="3.0625" y="5.0"/>
+      <color-var domain="AB" name="xab" x="13.0625" y="5.0"/>
+      <color-var domain="Ccells" name="xc" x="23.0625" y="5.0"/>
+      <color-var domain="Ncells" name="xn" x="32.0625" y="5.0"/>
+      <color-var domain="AGG" name="xag" x="45.0625" y="5.0"/>
+      <color-var domain="Ccells" name="xc2" x="23.0625" y="7.0"/>
+      <constant consttype="REAL" name="alpha3" value="1.0" x="45.75" y="22.0"/>
+      <constant consttype="REAL" name="alpha1" value="1.0" x="45.75" y="24.0"/>
+      <constant consttype="REAL" name="alpha2" value="1.0" x="45.75" y="26.0"/>
+      <color-var domain="Ncells" name="xn2" x="32.0625" y="7.0"/>
+      <constant consttype="REAL" name="h" value="0.0" x="45.75" y="29.0"/>
+      <constant consttype="REAL" name="alpha6" value="1.0" x="45.75" y="28.0"/>
+      <constant consttype="REAL" name="alpha4" value="1.0" x="45.75" y="31.0"/>
+      <color-var domain="Ecells" name="xe1" x="2.5625" y="7.0"/>
+      <constant consttype="REAL" name="unosuTinj" value="0.0" x="46.75" y="10.0"/>
+      <color-class definition="agent env{1..1}" name="ENV" x="2.125" y="9.0"/>
+      <color-var domain="ENV" name="xenv" x="2.9375" y="11.0"/>
+      <constant consttype="REAL" name="alpha5" value="0.0" x="55.0625" y="32.0"/>
+      <constant consttype="REAL" name="alpha9" value="1.0" x="53.9375" y="19.0"/>
+      <constant consttype="REAL" name="alpha7" value="1.0" x="55.9375" y="21.0"/>
+    </nodes>
+    <edges>
+      <arc head="N" kind="OUTPUT" mult="&lt;xn&gt;" mult-k="0.42509765625000007" mult-x="-1.5" mult-y="0.20039062499999716" tail="NewN"/>
+      <arc head="NewN" kind="INPUT" mult="&lt;xenv&gt;" mult-x="-1.5" mult-y="0.0" tail="environment"/>
+      <arc head="growEs" kind="INPUT" mult="&lt;xn&gt;" mult-x="-1.5" mult-y="-1.0" tail="N"/>
+      <arc head="environment" kind="OUTPUT" mult="&lt;xenv&gt;" mult-x="-1.0" mult-y="0.6843113545466011" tail="NewN">
+        <point x="41.0" y="46.0"/>
+      </arc>
+    </edges>
+  </gspn>
+  <gspn name="AbandAsCells" show-fluid-cmd="false">
+    <nodes>
+      <place domain="AB" label-x="6.5" label-y="0.5" name="Abtravel" x="23.0" y="19.0"/>
+      <transition delay="unosuTau" label-x="3.5" label-y="0.0" name="Delay2" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="23.55" y="23.0"/>
+      <place domain="AB" label-x="2.5" name="As" x="23.0" y="26.0"/>
+      <transition delay="alpha10" name="Asdeath" nservers-x="0.5" type="EXP" x="30.55" y="26.0"/>
+      <transition label-y="-2.0" name="EskillsAs" nservers-x="0.5" superposition-tags="killAs?" type="EXP" x="13.55" y="15.0"/>
+      <transition name="Esdup" nservers-x="0.5" superposition-tags="birthEs?" type="EXP" x="12.55" y="22.0"/>
+      <place domain="AB" label-x="-3.5" label-y="0.0" name="Ab" x="23.0" y="10.0"/>
+      <transition delay="alpha11" label-x="5.5" label-y="0.0" name="copy_Amigration" nservers-x="0.5" rotation="1.5707963267948966" superpos-x="-3.5" superpos-y="0.5" type="EXP" x="23.55" y="15.0"/>
+      <transition delay="alpha10" name="Abdeath" nservers-x="0.5" type="EXP" x="30.55" y="10.0"/>
+      <color-class definition="agent e{1..100}" name="Ecells" x="3.0" y="3.0"/>
+      <constant consttype="REAL" name="alpha11" value="1.0" x="46.0625" y="13.0"/>
+      <constant consttype="REAL" name="unosuTau" value="1.0" x="45.8125" y="15.0"/>
+      <color-class definition="agent ab{1..100}" name="AB" x="15.0" y="3.0"/>
+      <color-class definition="agent c{1..100}" name="Ccells" x="27.6875" y="3.0"/>
+      <color-class definition="agent Ncells{1..100}" name="Ncells" x="39.625" y="3.0"/>
+      <color-class definition="agent ag{1..3}" name="AGG" x="54.3125" y="3.0"/>
+      <constant consttype="REAL" name="alpha8" value="1.0" x="45.75" y="17.0"/>
+      <constant consttype="REAL" name="alpha10" value="1.0" x="45.75" y="19.0"/>
+      <color-var domain="Ecells" name="xe" x="3.0625" y="5.0"/>
+      <color-var domain="AB" name="xab" x="13.0625" y="5.0"/>
+      <color-var domain="Ccells" name="xc" x="23.0625" y="5.0"/>
+      <color-var domain="Ncells" name="xn" x="32.0625" y="5.0"/>
+      <color-var domain="AGG" name="xag" x="45.0625" y="5.0"/>
+      <color-var domain="Ccells" name="xc2" x="23.0625" y="7.0"/>
+      <constant consttype="REAL" name="alpha3" value="1.0" x="45.75" y="22.0"/>
+      <constant consttype="REAL" name="alpha1" value="1.0" x="45.75" y="24.0"/>
+      <constant consttype="REAL" name="alpha2" value="1.0" x="45.75" y="26.0"/>
+      <color-var domain="Ncells" name="xn2" x="32.0625" y="7.0"/>
+      <constant consttype="REAL" name="h" value="0.0" x="45.75" y="29.0"/>
+      <constant consttype="REAL" name="alpha6" value="1.0" x="45.75" y="28.0"/>
+      <constant consttype="REAL" name="alpha4" value="1.0" x="45.75" y="31.0"/>
+      <color-var domain="Ecells" name="xe1" x="2.5625" y="7.0"/>
+      <constant consttype="REAL" name="unosuTinj" value="0.0" x="46.75" y="10.0"/>
+      <color-class definition="agent env{1..1}" name="ENV" x="2.125" y="9.0"/>
+      <color-var domain="ENV" name="xenv" x="2.9375" y="11.0"/>
+      <constant consttype="REAL" name="alpha5" value="0.0" x="55.0625" y="32.0"/>
+      <constant consttype="REAL" name="alpha9" value="1.0" x="53.9375" y="19.0"/>
+      <constant consttype="REAL" name="alpha7" value="1.0" x="55.9375" y="21.0"/>
+    </nodes>
+    <edges>
+      <arc head="Delay2" kind="INPUT" mult="&lt;xab&gt;" tail="Abtravel"/>
+      <arc head="As" kind="OUTPUT" mult="&lt;xab&gt;" mult-x="-2.0" mult-y="0.0" tail="Delay2"/>
+      <arc head="Asdeath" kind="INPUT" mult="&lt;xab&gt;" mult-x="-0.5" mult-y="-0.5" tail="As"/>
+      <arc head="EskillsAs" kind="INPUT" mult="&lt;xab&gt;" tail="As"/>
+      <arc head="Esdup" kind="INPUT" mult="&lt;xab&gt;" tail="As"/>
+      <arc head="As" kind="OUTPUT" mult="&lt;xab&gt;" tail="Esdup">
+        <point x="18.5" y="28.5"/>
+      </arc>
+      <arc head="copy_Amigration" kind="INPUT" mult="&lt;xab&gt;" tail="Ab"/>
+      <arc head="Abdeath" kind="INPUT" mult="&lt;xab&gt;" tail="Ab"/>
+      <arc head="Abtravel" kind="OUTPUT" mult="&lt;xab&gt;" tail="copy_Amigration"/>
+    </edges>
+  </gspn>
+  <measures gspn-name="GSPN" name="Measures" simplified-UI="false">
+    <assignments/>
+    <greatspn/>
+    <formulas>
+      <formula comment="Basic statistics of the toolchain execution." language="STAT"/>
+      <formula comment="All the basic Petri net measures" language="ALL"/>
+    </formulas>
+  </measures>
+  <algebra2 alignment="HORIZONTAL" name="Composition 3" policy="UNARY_CONJUGATED_ALL" restriction="true" show-fluid-cmd="false">
+    <bindings-list/>
+    <place-tags/>
+    <transition-tags>
+      <tag name="killAs"/>
+      <tag name="changeNEs"/>
+      <tag name="birthEs"/>
+      <tag name="birth"/>
+      <tag name="bornEs"/>
+      <tag name="killC1"/>
+      <tag name="helpAg"/>
+      <tag name="killC2b"/>
+      <tag name="killC2a"/>
+    </transition-tags>
+    <subnet netname="EandEsCells"/>
+    <subnet netname="AbandAsCells"/>
+    <subnet netname="Agcells"/>
+    <subnet netname="Ccells"/>
+    <subnet netname="Ncells"/>
+  </algebra2>
+  <gspn name="Melanoma" show-fluid-cmd="false">
+    <nodes>
+      <place domain="Ecells" name="Einj" x="9.0" y="11.0"/>
+      <place domain="AB" label-x="-3.5" label-y="0.0" name="Ab" x="23.0" y="11.0"/>
+      <place domain="Ecells" name="Etravel" x="9.0" y="19.0"/>
+      <place domain="AB" label-x="6.5" label-y="0.5" name="Abtravel" x="23.0" y="19.0"/>
+      <color-class definition="agent e{1..100}" name="Ecells" x="1.0" y="1.0"/>
+      <transition delay="alpha11" label-x="-3.0" label-y="-1.0" name="Emigration" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="9.55" y="16.0"/>
+      <constant consttype="REAL" name="alpha11" value="1.0" x="44.0625" y="11.0"/>
+      <place domain="Ecells" label-x="-4.5" label-y="-0.5" name="Es" x="9.0" y="26.0"/>
+      <transition delay="unosuTau" delay-x="-5.0" label-x="-3.5" label-y="-0.5" name="Delay" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="9.55" y="23.0"/>
+      <constant consttype="REAL" name="unosuTau" value="1.0" x="43.8125" y="13.0"/>
+      <color-class definition="agent ab{1..100}" name="AB" x="13.0" y="1.0"/>
+      <transition delay="alpha11" label-x="5.5" label-y="0.0" name="Amigration" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="23.55" y="16.0"/>
+      <transition delay="unosuTau" label-x="3.5" label-y="0.0" name="Delay2" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="23.55" y="23.0"/>
+      <place domain="AB" label-x="2.5" name="As" x="23.0" y="26.0"/>
+      <color-class definition="agent c{1..100}" name="Ccells" x="25.6875" y="1.0"/>
+      <color-class definition="agent Ncells{1..100}" name="Ncells" x="37.625" y="1.0"/>
+      <color-class definition="agent ag{1..3}" name="AGG" x="52.3125" y="1.0"/>
+      <place domain="Ccells" label-x="-5.0" label-y="-0.5" marking="&lt;c1&gt;+&lt;c2&gt;+&lt;c3&gt;" name="C" x="9.0" y="37.0"/>
+      <place domain="Ncells" label-x="2.0" label-y="-0.5" name="N" x="41.0" y="37.0"/>
+      <place domain="AGG" label-y="-2.0" name="Ag" x="30.0" y="37.0"/>
+      <transition delay="alpha8" name="Edeath" nservers-x="0.5" type="EXP" x="14.55" y="11.0"/>
+      <transition delay="alpha10" name="Abdeath" nservers-x="0.5" type="EXP" x="28.55" y="11.0"/>
+      <constant consttype="REAL" name="alpha8" value="1.0" x="43.75" y="15.0"/>
+      <transition delay="alpha8" name="Esdeath" nservers-x="0.5" type="EXP" x="18.55" y="31.0"/>
+      <transition delay="alpha10" name="Asdeath" nservers-x="0.5" type="EXP" x="30.55" y="26.0"/>
+      <constant consttype="REAL" name="alpha10" value="1.0" x="43.75" y="17.0"/>
+      <transition delay="alpha1" name="NewC" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="4.55" y="42.0"/>
+      <color-var domain="Ecells" name="xe" x="1.0625" y="3.0"/>
+      <color-var domain="AB" name="xab" x="11.0625" y="3.0"/>
+      <color-var domain="Ccells" name="xc" x="21.0625" y="3.0"/>
+      <color-var domain="Ncells" name="xn" x="30.0625" y="3.0"/>
+      <color-var domain="AGG" name="xag" x="43.0625" y="3.0"/>
+      <color-var domain="Ccells" name="xc2" x="21.0625" y="5.0"/>
+      <transition delay="alpha3" label-y="-2.0" name="Ckill" nservers-x="0.5" type="EXP" x="5.55" y="32.0"/>
+      <constant consttype="REAL" name="alpha3" value="1.0" x="43.75" y="20.0"/>
+      <constant consttype="REAL" name="alpha1" value="1.0" x="43.75" y="22.0"/>
+      <constant consttype="REAL" name="alpha2" value="1.0" x="43.75" y="24.0"/>
+      <transition delay="alpha2" label-x="-2.5" label-y="0.0" name="Cdeath" nservers-x="0.5" type="EXP" x="14.55" y="42.0"/>
+      <transition delay="h" label-x="3.5" label-y="-1.0" name="NewN" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="41.55" y="41.0"/>
+      <color-var domain="Ncells" name="xn2" x="30.0625" y="5.0"/>
+      <place domain="ENV" label-x="8.0" label-y="0.5" marking="&lt;All&gt;" name="environment" x="47.0" y="45.0"/>
+      <constant consttype="REAL" name="h" value="0.0" x="43.75" y="27.0"/>
+      <transition delay="alpha6" delay-x="-2.5" label-y="-2.0" name="growEs" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="30.55" y="45.0"/>
+      <constant consttype="REAL" name="alpha6" value="1.0" x="43.75" y="26.0"/>
+      <transition delay="alpha4" label-y="-2.0" name="Ckill2" nservers-x="0.5" type="EXP" x="19.55" y="37.0"/>
+      <constant consttype="REAL" name="alpha4" value="1.0" x="43.75" y="29.0"/>
+      <color-var domain="Ecells" name="xe1" x="0.5625" y="5.0"/>
+      <constant consttype="REAL" name="unosuTinj" value="0.0" x="44.75" y="8.0"/>
+      <color-class definition="agent env{1..1}" name="ENV" x="0.125" y="7.0"/>
+      <color-var domain="ENV" name="xenv" x="0.9375" y="9.0"/>
+      <transition delay="alpha5" name="Agkill" nservers-x="0.5" type="EXP" x="34.55" y="32.0"/>
+      <transition delay="h" name="Nkill" nservers-x="0.5" type="EXP" x="41.55" y="32.0"/>
+      <transition delay="alpha9" delay-y="0.0" name="EskillsAs" nservers-x="0.5" type="EXP" x="16.55" y="17.0"/>
+      <transition delay="alpha7" name="Esdup" nservers-x="0.5" type="EXP" x="16.55" y="26.0"/>
+      <constant consttype="REAL" name="alpha5" value="0.0" x="53.0625" y="30.0"/>
+      <constant consttype="REAL" name="alpha9" value="1.0" x="51.9375" y="17.0"/>
+      <constant consttype="REAL" name="alpha7" value="1.0" x="53.9375" y="19.0"/>
+    </nodes>
+    <edges>
+      <arc head="Emigration" kind="INPUT" mult="&lt;xe&gt;" tail="Einj"/>
+      <arc head="Etravel" kind="OUTPUT" mult="&lt;xe&gt;" tail="Emigration"/>
+      <arc head="Delay" kind="INPUT" mult="&lt;xe&gt;" tail="Etravel"/>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;" mult-y="-0.5" tail="Delay"/>
+      <arc head="Amigration" kind="INPUT" mult="&lt;xab&gt;" tail="Ab"/>
+      <arc head="Abtravel" kind="OUTPUT" mult="&lt;xab&gt;" tail="Amigration"/>
+      <arc head="Delay2" kind="INPUT" mult="&lt;xab&gt;" tail="Abtravel"/>
+      <arc head="As" kind="OUTPUT" mult="&lt;xab&gt;" mult-x="-2.0" mult-y="0.0" tail="Delay2"/>
+      <arc head="Edeath" kind="INPUT" mult="&lt;xe&gt;" tail="Einj"/>
+      <arc head="Abdeath" kind="INPUT" mult="&lt;xab&gt;" tail="Ab"/>
+      <arc head="Esdeath" kind="INPUT" mult="&lt;xe&gt;" tail="Es"/>
+      <arc head="Asdeath" kind="INPUT" mult="&lt;xab&gt;" mult-x="-0.5" mult-y="-0.5" tail="As"/>
+      <arc head="C" kind="OUTPUT" mult="&lt;xc&gt;+&lt;xc2&gt;" mult-k="1.50009765625" mult-x="-0.48720189144736814" mult-y="1.5" tail="NewC">
+        <point x="7.5" y="43.0"/>
+        <point x="10.0" y="43.0"/>
+      </arc>
+      <arc head="Ckill" kind="INPUT" mult="&lt;xc&gt;" mult-k="1.20107421875" tail="C">
+        <point x="6.0" y="34.0"/>
+      </arc>
+      <arc head="Ckill" kind="INPUT" mult="&lt;xe&gt;" mult-x="-1.214268898770598" mult-y="1.5" tail="Es">
+        <point x="5.5" y="28.0"/>
+      </arc>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;" mult-k="1.2483398437500002" mult-x="-0.7774256604095662" mult-y="0.11934943393465858" tail="Ckill">
+        <point x="7.5" y="30.0"/>
+      </arc>
+      <arc head="Cdeath" kind="INPUT" mult="&lt;xc&gt;" mult-k="0.25595703125" tail="C"/>
+      <arc head="N" kind="OUTPUT" mult="&lt;xn&gt;" mult-k="0.42509765625000007" mult-x="-1.5" mult-y="0.20039062499999716" tail="NewN"/>
+      <arc head="NewN" kind="INPUT" mult="&lt;xenv&gt;" mult-x="-1.5" mult-y="0.0" tail="environment"/>
+      <arc head="growEs" kind="INPUT" mult="&lt;xn&gt;" tail="N"/>
+      <arc head="growEs" kind="INPUT" mult="&lt;xag&gt;" mult-x="1.5" mult-y="0.0" tail="Ag"/>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;" mult-k="0.86337890625" tail="growEs">
+        <point x="3.0" y="46.0"/>
+        <point x="3.0" y="27.0"/>
+      </arc>
+      <arc head="Ckill2" kind="INPUT" mult="&lt;xe&gt;" tail="Es">
+        <point x="14.5" y="32.0"/>
+      </arc>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;" mult-k="1.6442382812499998" mult-x="-0.3081712302730537" mult-y="1.2221681363078112" tail="Ckill2">
+        <point x="13.5" y="34.5"/>
+        <point x="12.0" y="33.0"/>
+      </arc>
+      <arc head="Ckill2" kind="INPUT" mult="&lt;xc&gt;" mult-k="0.41669921875000004" tail="C"/>
+      <arc head="Ag" kind="OUTPUT" mult="&lt;xag&gt;" tail="Ckill2">
+        <point x="26.0" y="38.0"/>
+      </arc>
+      <arc head="environment" kind="OUTPUT" mult="&lt;xenv&gt;" mult-x="-1.0" mult-y="0.6843113545466011" tail="NewN">
+        <point x="41.0" y="46.0"/>
+      </arc>
+      <arc head="NewC" kind="INPUT" mult="&lt;xc&gt;" mult-k="1.23193359375" tail="C">
+        <point x="8.0" y="40.0"/>
+      </arc>
+      <arc head="Agkill" kind="INPUT" mult="&lt;xag&gt;" tail="Ag"/>
+      <arc head="Nkill" kind="INPUT" mult="&lt;xn&gt;" tail="N"/>
+      <arc head="EskillsAs" kind="INPUT" mult="&lt;xe&gt;" tail="Es">
+        <point x="14.0" y="18.0"/>
+      </arc>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;" tail="EskillsAs">
+        <point x="15.5" y="20.0"/>
+      </arc>
+      <arc head="EskillsAs" kind="INPUT" mult="&lt;xab&gt;" tail="As"/>
+      <arc head="Esdup" kind="INPUT" mult="&lt;xab&gt;" tail="As">
+        <point x="20.0" y="24.0"/>
+      </arc>
+      <arc head="As" kind="OUTPUT" mult="&lt;xab&gt;" tail="Esdup">
+        <point x="20.5" y="27.0"/>
+      </arc>
+      <arc head="Esdup" kind="INPUT" mult="&lt;xe&gt;" tail="Es">
+        <point x="14.0" y="24.0"/>
+      </arc>
+      <arc head="Es" kind="OUTPUT" mult="&lt;xe&gt;+&lt;xe1&gt;" tail="Esdup">
+        <point x="14.5" y="27.0"/>
+      </arc>
+    </edges>
+  </gspn>
+</project>
