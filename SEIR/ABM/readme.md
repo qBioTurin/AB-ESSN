@@ -81,7 +81,7 @@ Tho plots are already represented into the interface. They  show  the total popu
 
 /*************************************************/
 
-    Notes: The file seirs_v1.0.netlogo presents a version of the SEIRS model obtained by manually  traslating the algorithm into  code and refer to previous work used for Epew2021 workshop
+ Note: The file seirs_v1.0.netlogo presents a version of the SEIRS model obtained by manually  traslating the algorithm into  code and refer to previous work used for Epew2021 workshop
 
 /*************************************************/
 
