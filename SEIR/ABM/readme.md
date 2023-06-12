@@ -19,39 +19,39 @@ The generated model (SEIRS_composed.nlogo) can be thus directly loaded within Ne
 
 ;;****
 
-to open-file
-  let namefile (word  seed ".csv")
-  file-open   namefile
-end
+    to open-file
+    let namefile (word  seed ".csv")
+    file-open   namefile
+    end
 
-to close-file
-file-close
-end
+    to close-file
+    file-close
+    end
 
-to report-results-2
-        file-print (word counter " " count turtles with [color = yellow] " "  count turtles with [color = cyan] " "  count turtles with [color = red] " "  count turtles with [color = green] )
-       ; file-close
-end
+    to report-results-2
+            file-print (word counter " " count turtles with [color = yellow] " "  count turtles with [color = cyan] " "  count turtles with [color = red] " "  count turtles with [color =   green] )
+          ; file-close
+    end
 
-to my-timer [ ExperimentName ]
-        let thetime timer
-        file-open "timers.csv"
-        file-print (sentence ExperimentName "," thetime "," date-and-time )
-        file-close
-end
+    to my-timer [ ExperimentName ]
+         let thetime timer
+         file-open "timers.csv"
+         file-print (sentence ExperimentName "," thetime "," date-and-time )
+         file-close
+    end
     
 Furthermore, the variable counter has been added among the global variables.
 
 Finally, to enable printing, the following code lines must been uncommented (remove the ";").
-;if ticks = 0 [reset-timer open-file ]
-if STOPTIME > 0 AND time > STOPTIME [ 
-    ;close-file  
- STOP ]  
+    ;if ticks = 0 [reset-timer open-file ]
+    if STOPTIME > 0 AND time > STOPTIME [ 
+        ;close-file  
+    STOP ]  
 
- ;if ((time + increment) > counter)  [ 
- ;  report-results-2
- ;   set counter (precision (counter + 0.1) 3)
- ;]
+    ;if ((time + increment) > counter)  [ 
+    ;  report-results-2
+    ;   set counter (precision (counter + 0.1) 3)
+    ;]
   
 /*************************************************/
    
