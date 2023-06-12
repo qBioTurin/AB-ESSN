@@ -3,6 +3,7 @@ library(epimod)
 library(dplyr)
 library(ggplot2)
 source("./Rfunction/PlotsGeneration.R")
+downloadContainers()
 
 # 2 step) SSA model generation using the decolored ESSN model
 
@@ -48,7 +49,7 @@ model.analysis(solver_fname = "./Net/MelanomaModels.solver",
 
 
 ggplot.generation(tracefile = "MelanomaModels_analysis/MelanomaModels-analysis-1.trace",
-                  csvPath="../AB-ESSN/NetLogoSimulations/treated/",  
+                  csvPath="../ABM/NetLogoSimulations/treated/",  
                   plotname = "Plots/treated") -> plT
 
 plT$plBox

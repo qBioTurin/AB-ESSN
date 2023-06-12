@@ -35,7 +35,10 @@ The composed, decolored models and the subnets necessary for the composition are
 
 ### SSA folder
 
-In the *Main.R* file all the steps to run the SSA algorithm starting from the decolored model are reported, while in *Rfunction/PlotsGeneration.R* it is possible to find the functions to generate the images.
-
+In this folder all the files necessary to reproduce the simulation of the Melanoma model. In particular
+  
+  1. *Main.R* reports all the steps to run the SSA algorithm starting from the decolored model 
+  2. *Rfunction/PlotsGeneration.R* reports the functions to generate the images.
+  
 ### ABM folder
 In this folder all the files necessary to compose the final model, as well as, obtain the netlogo code for  the simulation of the Melanoma model are reported.

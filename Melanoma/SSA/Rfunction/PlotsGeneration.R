@@ -1,7 +1,7 @@
 library(readr)
 library(ggplot2)
 library(dplyr)
-
+library(tidyr)
 
 plot <- function(trace)
 {
@@ -121,6 +121,8 @@ ggplot.generation<-function(tracefile,csvPath=NULL,plotname = "Models"){
     #geom_boxplot(aes(x = as.factor(Time)) )+
     geom_line(data= as.data.frame(DF_mean),aes(x = Time,y=Mean),col="black",linetype="dashed")+
     facet_grid(Names~Model,scale="free")+
+    theme_bw()+
+    labs(x = "", y = "Marking", col = "Approach")+
     theme(axis.text=element_text(size = 10, hjust = 0.5),
           axis.title=element_text(size=20,face="bold"),
           axis.line = element_line(colour="black"),
@@ -130,7 +132,6 @@ ggplot.generation<-function(tracefile,csvPath=NULL,plotname = "Models"){
           panel.background = element_rect(colour = NA),
           plot.background = element_rect(colour = NA),
           plot.margin=unit(c(10,5,5,5),"mm") )+
-    labs(x="",y="Value")+
     scale_x_continuous(breaks = steps, labels=steps )
   
   DF_max <- DF.All %>%
@@ -143,6 +144,8 @@ ggplot.generation<-function(tracefile,csvPath=NULL,plotname = "Models"){
     geom_boxplot(data=df.plot[which(df.plot$Time %in% steps ),],aes(x = as.factor(Time),y = Value,col=Model) )+
     #geom_line(data= as.data.frame(DF_mean),aes(x = Time,y=Mean,col=Model),linetype="dashed")+
     facet_grid(rows = vars(Names),scale="free")+
+    theme_bw()+
+    labs(x = "", y = "", col = "Approach")+
     theme(axis.text=element_text(size = 10, hjust = 0.5),
           axis.title=element_text(size=20,face="bold"),
           axis.line = element_line(colour="black"),
@@ -157,7 +160,6 @@ ggplot.generation<-function(tracefile,csvPath=NULL,plotname = "Models"){
           plot.background = element_rect(colour = NA),
           strip.text.y = element_text(size=14,face="bold")
     )+
-    labs(x="",y="")+
     scale_x_discrete(breaks = steps, labels=steps )
   
   # Extracxt the legend from p1
