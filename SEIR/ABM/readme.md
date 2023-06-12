@@ -58,12 +58,6 @@ if STOPTIME > 0 AND time > STOPTIME [
 The manual modifications for file saving allow to produce a <seed>.csv file (with the results  obtained at time 0.1, 0.2, ... up to endtime or stop by user).
 Once the model is loaded, you can run the simulation with the "go" button.
 
-/*************************************************/
-
-Tho plots are already represented into the interface. They  show  the total population (PEOPLE) and the sub_populations (i.e., susceptible, exposed, infected, recovered) vs time 
-
-/*************************************************/
-
 If you with to change this to have more granularity, 
 inside the "to go" procedure you have to change 
 the counter increment, from
@@ -75,6 +69,14 @@ to
     set counter  precision (counter + <delta>) 3
 
 Where "<delta>" is you time-step size (i.e., 0.01)
+
+
+/*************************************************/
+
+Tho plots are already represented into the interface. They  show  the total population (PEOPLE) and the sub_populations (i.e., susceptible, exposed, infected, recovered) vs time 
+
+/*************************************************/
+
 
 /*************************************************/
 
