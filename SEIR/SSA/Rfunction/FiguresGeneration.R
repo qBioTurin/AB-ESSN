@@ -6,11 +6,11 @@ library(tidyr)
 col = RColorBrewer::brewer.pal(n = 2,name = "Pastel1")
 viridis::viridis(2, alpha = 0.5, option = "D")
 
-csvPaths = list.files(path = "NetLogoSimulations/sim reinfezioni/")
+csvPaths = list.files(path = "../ABM/sim_reinfezioni/")
 
 ReInfectionTimes = lapply(csvPaths, function(csvPath){
   print(csvPath)
-  X1_rtime <- read_csv(paste0("NetLogoSimulations/sim reinfezioni/",csvPath),col_names = F)
+  X1_rtime <- read_csv(paste0("../ABM/sim_reinfezioni/",csvPath),col_names = F)
   X1_rtime = gsub(X1_rtime$X1,pattern = "\\[|\\]",replacement = "")
   X1split = strsplit(X1_rtime,split = " ")
   ReInfectionTimes = matrix(NA, nrow = length(X1split),ncol = 10 )
@@ -69,11 +69,13 @@ pl = ReInfectionTimesDF %>%
        y = "Time of the infection (days)", 
        col = "Status",
        fill = "Status") +
-  theme_bw() +
-  #facet_wrap(~Deceased,scales = "free")+
-  theme(
-    legend.position = "none"
-  )
+  theme_bw()+
+  theme(legend.position = "none",
+        axis.title = element_text(face="bold",size = 15),
+        legend.title = element_text(face="bold",size = 15),
+        axis.text = element_text(size = 10),
+        legend.text = element_text(size = 12),
+        strip.text = element_text(face="bold",size = 12))
 
 pl
 
@@ -114,20 +116,26 @@ pl =  ReInfectionTimesDF %>%
   ungroup() %>%
   group_by(File,Deceased,n) %>%
   dplyr::summarise(Ninfection = length(n)) %>%
-  filter(Deceased=="Alive") %>%
+  #filter(Deceased=="Alive") %>%
   ggplot() +
-  geom_boxplot(aes(x = as.factor(n), y = Ninfection, col = "blue", fill = "blue"),alpha = 0.4) +
+  geom_boxplot(aes(x = as.factor(n), y = Ninfection,
+                   col = "blue", fill = "blue"),
+               alpha = 0.4) +
   scale_fill_manual(values =  "#44015480" ) +
   scale_color_manual(values = "#44015480" ) +
-  facet_wrap(~Deceased,scales = "free")+
-  labs(x = "Number of infections, 1000 simulations", y = "Distribution of counts",fill = "Status") +
+  labs(x = "Number of infections",
+       y = "Distribution of counts",
+       fill = "Status") +
   theme_bw()+
-  theme(
-    legend.position = "none"
-  )
+  theme(legend.position = "none",
+        axis.title = element_text(face="bold",size = 15),
+        legend.title = element_text(face="bold",size = 15),
+        axis.text = element_text(size = 10),
+        legend.text = element_text(size = 12),
+        strip.text = element_text(face="bold",size = 12))
 pl
 
-ggsave(pl,filename = "InfectionCounts.pdf",device = "pdf",width = 8,height = 5)
+ggsave(pl,filename = "Plots/InfectionCounts.pdf",device = "pdf",width = 8,height = 5)
 
 
 

@@ -14,31 +14,31 @@ ggplot.generation<-function(i,mat=F){
   Time.grid<- unique(trace$Time)
   
   PNList<-lapply(c("S","E","I","R"),function(j){
-      indexes<-columnsName[grep(paste0("^",j,"_a"), columnsName)]
-      if(length(indexes)>1){
-        SumZones<-rowSums(trace[,indexes])
-      }else{
-        SumZones<-trace[,indexes]
-      }
-      df<-data.frame(Time = trace$Time, 
-                     V=SumZones,
-                     Pop = j,
-                     ID = rep(1:n_sim,each = length(unique(trace$Time))) )
-      return(df)
-    } )
+    indexes<-columnsName[grep(paste0("^",j,"_a"), columnsName)]
+    if(length(indexes)>1){
+      SumZones<-rowSums(trace[,indexes])
+    }else{
+      SumZones<-trace[,indexes]
+    }
+    df<-data.frame(Time = trace$Time, 
+                   V=SumZones,
+                   Pop = j,
+                   ID = rep(1:n_sim,each = length(unique(trace$Time))) )
+    return(df)
+  } )
   PN.df<-do.call("rbind",PNList)
-  PN.df$Model <- "PN"
+  PN.df$Model <- "SSA"
   
   
   ### AM model:
   if(mat){
     resultsAM <- readMat(paste0("AMresults/",i,".mat"))[[1]]
   }else{
-     resultsAM <- read_table2(paste0("AMresults/results",i,"_t20.csv"), 
-                           col_names = FALSE)
+    resultsAM <- read_table2(paste0("AMresults/results",i,"_t20.csv"), 
+                             col_names = FALSE)
   }
   
- 
+  
   AM_list<-lapply(seq(1,length(resultsAM[1,]),by = 5), function(j){
     res<-as.data.frame(resultsAM[,j:(j+4)])
     colnames(res) <- c( "Time" , "S" , "E" ,"I", "R")
@@ -61,34 +61,44 @@ ggplot.generation<-function(i,mat=F){
   AM.df$Model <- "AM"
   
   DF.All<- rbind(PN.df,AM.df)
-
-  #df.plot<-DF.All[which(DF.All$Time %in% 0:10),]
+  
+  
   df.plot<-DF.All[which(DF.All$Time %in% Time.grid),]
-pl<-ggplot(df.plot,aes(y = V,col=Model))+
-  geom_boxplot(aes(x = as.factor(Time)) )+
-  facet_wrap(~Pop,scale="free")+
-  labs(title=paste("Number of Zones",i))
-
+  pl<-ggplot(df.plot,aes(y = V,col=Model))+
+    geom_boxplot(aes(x = as.factor(Time)) )+
+    facet_wrap(~Pop,scale="free")+
+    labs(title=paste("Number of Zones",i))
+  
   df.plot2<-DF.All[which(DF.All$Time %in% Time.grid),]#[which(DF.All$Time %in% seq(0,10,by=1)),]
   
-  Mean.plot<-aggregate(df.plot2$V,by=list(Time = df.plot2$Time,Model = df.plot2$Model,Pop = df.plot2$Pop ),
+  Mean.plot<-aggregate(df.plot2$V,
+                       by=list(Time = df.plot2$Time,Model = df.plot2$Model,Pop = df.plot2$Pop ),
                        FUN = "mean")
   colnames(Mean.plot)[4]<-"Mean"
-  sd.plot<-aggregate(df.plot2$V,by=list(Time = df.plot2$Time,Model = df.plot2$Model,Pop = df.plot2$Pop ),
+  sd.plot<-aggregate(df.plot2$V,
+                     by=list(Time = df.plot2$Time,Model = df.plot2$Model,Pop = df.plot2$Pop ),
                      FUN = "sd")
   colnames(sd.plot)[4]<-"sd"
   
   Stat.df <- merge(sd.plot,Mean.plot)
   
+  df.plot$Pop = factor(df.plot$Pop,levels = c("S","E","I","R"))
   pl2<-ggplot(df.plot,aes(y = V,col=Model))+
     geom_boxplot(aes(x = as.factor(Time)) )+
-    geom_line(data= Stat.df,aes(x= Time+1, y = Mean,linetype="Mean"))+
-    geom_line(data= Stat.df,aes(x= Time+1, y = Mean+sd,linetype="Mean+-sd"))+
-    geom_line(data= Stat.df,aes(x= Time+1, y = Mean-sd,linetype="Mean+-sd"))+
-    facet_wrap(~Pop,scale="free")
+    #geom_line(data= Stat.df,aes(x= Time+1, y = Mean,linetype="Mean"))+
+    #geom_line(data= Stat.df,aes(x= Time+1, y = Mean+sd,linetype="Mean+-sd"))+
+    #geom_line(data= Stat.df,aes(x= Time+1, y = Mean-sd,linetype="Mean+-sd"))+
+    facet_wrap(~Pop,scale="free")+
+    theme_bw()+
+    theme(legend.position = "bottom",
+          axis.title = element_text(face="bold",size = 15),
+          legend.title = element_text(face="bold",size = 15),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(face="bold",size = 12))+
+    labs(x = "Time", y = "Population size",col = "Approach")
   
   Median.plot<-aggregate(df.plot2$V,by=list(Time = df.plot2$Time,Model = df.plot2$Model,Pop = df.plot2$Pop ),
-                     FUN = "median")
+                         FUN = "median")
   colnames(sd.plot)[4]<-"Median"
   
   diff.plot.all <- merge(sd.plot,Mean.plot)
@@ -112,14 +122,14 @@ pl<-ggplot(df.plot,aes(y = V,col=Model))+
     facet_wrap(~Pop,scale="free")+
     labs(title="Diff. relativa")
   
-  ggsave(filename = paste0("Dynamics",i,".png"),plot = pl2,device = "png",width = 10,height = 8 )
-  ggsave(filename = paste0("DiffAss",i,".png"),plot = pldiff.ass,device = "png",width = 10,height = 8 )
-  ggsave(filename = paste0("DiffRel",i,".png"),plot = pldiff.rel,device = "png",width = 10,height = 8 )
+  ggsave(path = "Plots", filename = paste0("Dynamics",i,".png"),plot = pl2,device = "png",width = 12,height = 8 )
+  ggsave(path = "Plots", filename = paste0("DiffAss",i,".png"),plot = pldiff.ass,device = "png",width = 10,height = 8 )
+  ggsave(path = "Plots", filename = paste0("DiffRel",i,".png"),plot = pldiff.rel,device = "png",width = 10,height = 8 )
   
-return(list(pldiff.ass=pldiff.ass,
-            pldiff.rel=pldiff.rel,
-            pl2=pl2,
-            df=DF.All))
+  return(list(pldiff.ass=pldiff.ass,
+              pldiff.rel=pldiff.rel,
+              pl2=pl2,
+              df=DF.All))
 }
 
 
@@ -132,17 +142,17 @@ ggplot.generation(25) -> pl25
 # ##### Testing:
 library(fdatest)
 
-data<-pl5$df
-#data<-pl10$df
+data<-pl25$df
+
 pvalesDF<-lapply(c("S","E","I","R"),function(i){
   PNdata<-data[data$Model == "PN" & data$Pop == i & data$Time %in% seq(0,20,by=0.5),c("ID","V")]
-PNmatrix<-t(sapply(unique(PNdata$ID),function(j) PNdata$V[PNdata$ID == j]))
-
-AMdata<-data[data$Model == "AM" & data$Pop == i & data$Time %in% seq(0,20,by=0.5),c("ID","V")]
-AMmatrix<-t(sapply(unique(AMdata$ID),function(j) AMdata$V[AMdata$ID == j]))
-
-ITP.result <- ITP2bspline(AMmatrix,PNmatrix,B=10^4)#, nknots = 9, order = 4)
-c(i,ITP.result$corrected.pval)
+  PNmatrix<-t(sapply(unique(PNdata$ID),function(j) PNdata$V[PNdata$ID == j]))
+  
+  AMdata<-data[data$Model == "AM" & data$Pop == i & data$Time %in% seq(0,20,by=0.5),c("ID","V")]
+  AMmatrix<-t(sapply(unique(AMdata$ID),function(j) AMdata$V[AMdata$ID == j]))
+  
+  ITP.result <- ITP2bspline(AMmatrix,PNmatrix,B=10^4)#, nknots = 9, order = 4)
+  c(i,ITP.result$corrected.pval)
 })
 pvalesDF <- do.call("cbind",pvalesDF)
 
