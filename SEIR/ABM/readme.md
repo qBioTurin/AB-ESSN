@@ -75,6 +75,7 @@ Where "<delta>" is you time-step size (i.e., 0.01)
 
 /*************************************************/
 
+    Notes: The file seirs_v1.0.netlogo presents a version of the SEIRS model obtained by manually  traslating the algorithm into  code and refer to previous work used for Epew2021 workshop
 
 /*************************************************/
 
