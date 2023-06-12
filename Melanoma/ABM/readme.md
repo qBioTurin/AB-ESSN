@@ -35,40 +35,41 @@ For example, for transition Ckill that both includes general functions according
         set myrate replace-item 2 myrate (countInstances * (alpha3) *  ((ASS + k2)/(ASS + k3)) * (1 - alpha4) ) ;; modified code for Michaelis-Menten law kinetics and read arc
       ]
     ]
-        ;...
+    ;...
 
-        ;...
-             ;; chosenAgent is leader of Ckill - rule execution
-                  let targetRate random-float (item 2 myrate)
-                  let xe [who] of self
-                  let _AA2 Ccells with [place = C AND (TRUE)]
-                  if any? _AA2 [
-                    ask _AA2 [
-                      if NOT bindingSelected [
-                        let xc [who] of self
-                        let ASS count ABB with [place = As AND (TRUE)] ;; Counting the number of AB as for read Arc
-                        ;; set targetRate targetRate - (alpha3)   ; original code
-                        set targetRate targetRate - (alpha3) *  ((ASS + k2)/(ASS + k3)) * (1 - alpha4) ;; modified code to select the right CCell that will be killed according to right rule rate
-                        if-else targetRate > 0 [ ]
-                        [
-                          ;; fire this binding
-                          set bindingSelected true
+    ;...
+         ;; chosenAgent is leader of Ckill - rule execution
+              let targetRate random-float (item 2 myrate)
+              let xe [who] of self
+              let _AA2 Ccells with [place = C AND (TRUE)]
+              if any? _AA2 [
+                ask _AA2 [
+                  if NOT bindingSelected [
+                    let xc [who] of self
+                    let ASS count ABB with [place = As AND (TRUE)] ;; Counting the number of AB as for read Arc
+                    ;; set targetRate targetRate - (alpha3)   ; original code
+                    set targetRate targetRate - (alpha3) *  ((ASS + k2)/(ASS + k3)) * (1 - alpha4) ;; modified code to select the right CCell that will be killed according to right rule rate
+                    if-else targetRate > 0 [ ]
+                    [
+                      ;; fire this binding
+                      set bindingSelected true
 
-                          ;; agent xe is modified
-                          ask turtle xe [
-                            set place Es
-                          ]
-
-                          ;; agent xc is killed
-                          ask turtle xc [die]
-
-                        ]
+                      ;; agent xe is modified
+                      ask turtle xe [
+                        set place Es
                       ]
+
+                      ;; agent xc is killed
+                      ask turtle xc [die]
+
                     ]
                   ]
                 ]
+              ]
+            ]
 
 /*************************************************/
+
 This model also includes inital conditions for vaccinations in the "setup" procedure, and rule rates set as presented in the article.
 
 /*************************************************/
