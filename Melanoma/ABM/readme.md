@@ -12,7 +12,7 @@ The starting point is represented by the Melanoma_nlogo.PNPRO file. In this file
 
 The generated model can be thus directly loaded within NetLogo. This model already include plots. However reporting functions for storing data into csv files is not implemented yet. For such reason we also manually included the required modifications. See the SEIRS Example to exactly know which modifications have been done to the file in order to obtain csv output.
 
-Furthermore, as GreatSPN does not automatically manage general functions and read arcs related to general functions, these have been manually added within the NetLogo code and are presented into the file Melanoma_netlogo.netlogo. 
+Furthermore, as GreatSPN does not automatically manage general functions and read arcs related to general functions, these have been manually added within the NetLogo code and are already present into the file Melanoma_netlogo.netlogo. 
 
 For example, for transition Ckill that both includes general functions according to Michaelis-Menten kinetics as well as read arcs, we have modified the code in two points, for rate calculation and rule execution, as follows:
 
