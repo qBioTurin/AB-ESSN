@@ -5,7 +5,7 @@ In  this  github page we show how the **GreatMod** framework can be efficiently 
 2. exploiting a compositional approach for the definition of a computational immunology model.
 
 We exploit the framework, called GreatMod, developed by [q-Bio group](https://qbio.di.unito.it/) for  the  analysis  of  biological  and  epidemiological  systems. All the details regarding the framework, and the R package *epimod*, can be found at the following link: [GreatMod](https://qbioturin.github.io/epimod/). 
-In particular, the installation of the workflow and the opening of the Petri Net models requires the downloading of the last version of the [GreatSPN](https://github.com/greatspn/SOURCES/blob/master/docs/INSTALL.md) editor.
+In particular, the installation of the workflow and the opening of the Petri Net models requires to download the last version of the [GreatSPN](https://github.com/greatspn/SOURCES/blob/master/docs/INSTALL.md) editor.
 
 ## SEIR model 
 
