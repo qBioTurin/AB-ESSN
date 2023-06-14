@@ -88,7 +88,7 @@ Tho plots are already represented into the interface. They  show  the total popu
 
 If you want to execute multiple simulations at a time you 
 can try the "behaviorspace" functionality from the "tools"
-menu, where you wil find one pre-defined experiment that carries 100 simulation with initial random seeds from 0 to 99.
+menu, where you will find one pre-defined experiment that carries 100 simulation with initial random seeds from 0 to 99.
 
 Please refer to the NetLogo manual for further assistance.
 
