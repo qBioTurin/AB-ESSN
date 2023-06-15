@@ -7,6 +7,16 @@ In  this  github page we show how the **GreatMod** framework can be efficiently 
 We exploit the framework, called GreatMod, developed by [q-Bio group](https://qbio.di.unito.it/) for  the  analysis  of  biological  and  epidemiological  systems. All the details regarding the framework, and the R package *epimod*, can be found at the following link: [GreatMod](https://qbioturin.github.io/epimod/). 
 In particular, the installation of the workflow and the opening of the Petri Net models requires to download the last version of the [GreatSPN](https://github.com/greatspn/SOURCES/blob/master/docs/INSTALL.md) editor.
 
+## Annex 1
+Supplementary file for manuscript:
+From compositional Petri Net modeling to macro and micro simulation by means of Stochatic Simulation and Agent-Based models
+by
+ELVIO AMPARORE, MARCO BECCUTI, PAOLO CASTAGNO, and SIMONE PERNICE, GIULIANA FRANCESCHINIS and MARZIO PENNISI
+submitted to
+ACM Transactions on Modeling and Performance Evaluation of Computing Systems
+
+The file contains additional details about the translation algortihm from ESSN to NetLogo format and some considerations about the correctness of the translation. 
+
 ## SEIR model 
 
 ### SSA folder
