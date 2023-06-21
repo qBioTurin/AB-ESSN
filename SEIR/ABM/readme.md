@@ -81,8 +81,11 @@ Tho plots are already represented into the interface. They  show  the total popu
 
 /*************************************************/
 
- Note: The file seirs_v1.0.netlogo refers to previous work used for Epew2021 workshop and
- presents a version of the SEIRS model obtained by manually  traslating the algorithm into  code  
+ Note: 
+ The file seirs_v1.0.netlogo refers to previous work used for Epew2021 workshop and
+ presents a version of the SEIRS model obtained by manually  traslating the algorithm into  code.
+
+ The file SEIRS_optimizations_EPEW2023 is a manually modified version for Epew2023 workshop where structural optimizations have been idetified by SNexpression tool and added into the Netlogo Model.  
     
 /*************************************************/
 
