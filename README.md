@@ -7,32 +7,33 @@ In  this  github page we show how the **GreatMod** framework can be efficiently 
 We exploit the framework, called GreatMod, developed by [q-Bio group](https://qbio.di.unito.it/) for  the  analysis  of  biological  and  epidemiological  systems. All the details regarding the framework, and the R package *epimod*, can be found at the following link: [GreatMod](https://qbioturin.github.io/epimod/). 
 In particular, the installation of the workflow and the opening of the Petri Net models requires to download the last version of the [GreatSPN](https://github.com/greatspn/SOURCES/blob/master/docs/INSTALL.md) editor.
 
+## Supplementary materials
 Supplementary file for manuscript:
 From compositional Petri Net modeling to macro and micro simulation by means of Stochatic Simulation and Agent-Based models
 by
 ELVIO AMPARORE, MARCO BECCUTI, PAOLO CASTAGNO, and SIMONE PERNICE, GIULIANA FRANCESCHINIS and MARZIO PENNISI
-submitted to
+accepted for publication on 
 ACM Transactions on Modeling and Performance Evaluation of Computing Systems
 
 The file contains additional details about the translation algortihm from ESSN to NetLogo format and some considerations about the correctness of the translation. 
 
-## Annex 1
+### Annex 1
 
-## SEIR model 
+### SEIR model 
 
-### SSA folder
+#### SSA folder
 
 In this folder all the files necessary to reproduce the simulation of the SEIRS model are reported:
   
   1. the *main.R* file reports all the steps to run the SSA algorithm to simulate the model, 
   2. the *Plot&Test.R* reports the commands to generate the images and to run the statistical tests.
 
-### ABM folder
+#### ABM folder
 
 In this folder all the files necessary to reproduce the simulation of the SEIRS
 obtained using the ABM are reported.
 
-## Melanoma model
+### Melanoma model
 
 <img src="./Melanoma/SSA/Plots/MelanomaModel.png" alt="Fig.1) Composed model of Immune system and Melanoma cells behavior."  />
 <p class="caption">
@@ -44,19 +45,19 @@ Such model reproduced the immune response stimulated by OT1 activated cytotoxic 
 
 The composed, decolored models and the subnets necessary for the composition are all stored in the PNPRO file in *Melanoma/SSA/Net* folder.
 
-### SSA folder
+#### SSA folder
 
 In this folder all the files necessary to reproduce the simulation of the Melanoma model. In particular
   
   1. *Main.R* reports all the steps to run the SSA algorithm starting from the decolored model 
   2. *Rfunction/PlotsGeneration.R* reports the functions to generate the images.
   
-### ABM folder
+#### ABM folder
 In this folder all the files necessary to compose the final model, as well as, obtain the netlogo code for  the simulation of the Melanoma model are reported.
 
-## Annex 2
+### Annex 2
 
-## Automatic Netlogo Translation
+### Automatic Netlogo Translation
 <img src="./SEIR/SEIRS.png" alt="Fig.2) The SEIRS ESSN model. Initial marking: N agents in place S (uniformly distributed among  |Zone| positions) and 5 agents in place I (all in the same position)."  />
 <p class="caption">
 Fig.2) The SEIRS ESSN model. Initial marking: N agents in place S (uniformly distributed among  |Zone| positions) and 5 agents in place I (all in the same position).
@@ -213,14 +214,14 @@ Once the event execution is completed, the same process is repeated by asking ag
 
 The generated NetLogo model will include, besides the code, some basic features such as the setup and go buttons, the possibility to select a custom stop time for the simulation (default 0; no stop) and a "random seed" input field on the model interface to select the initial random seed of the simulation. Moreover, a basic real-time plot for the cumulative number of agents of the same type and sub-classes (i.e., number of agents of the same type but in a different states) is incorporated into the model interface.
 
-## Correctness of the translation ##
+### Correctness of the translation ###
 The generated ABM model is equivalent to the corresponding ESSN model it originated from as, by construction, a bijective relationship holds.
 
-### State bijection ###
+#### State bijection ####
 
 Each ESSN subnet identifies a given agent type, the set of places within a given subnet identifies a state feature for that given agent type whose feature cardinality (i.e., number of possible values) is equal to the number of places in the subnet. The color domain of each place identifies the set of features of such agent type, including a color id that uniquely identifies tokens as agents. So, as we impose that each token must be unique (thanks to a given color id), each token will uniquely correspond to an agent. Thus, the ESSN state that is a given distribution of (colored) tokens in the places will be represented in the ABM as the union of the states of all Agents. So there is a mapping from the ABM state and the Net and vice-versa. Note here that during translation the color id is not reported as in NetLogo Agents are already unique entities with their id.
 
-### Transtition/rule-instance bijection ###
+#### Transtition/rule-instance bijection ####
 
 The ESSN state change occurs in a given state for a given enabled transition instance. Correspondingly, In the ABM a state change occurs when a rule among the enabled ones is chosen and executed. In the ABM there is one rule for each transition, and each rule has an associated leader agent and possibly other agents participating in the rule. The enabling of the rule in the ABM is checked by the leader agent, based on its state and the states of the other participating agents: in any state there is one enabled rule for each possible enabled instance of the corresponding transition and its rate is the same as that of the corresponding transition instance.
 The enabled instances of the different rules are determined by iterating on each leader agent whose state satisfies the requirement for rule enabling, and in case of an interaction transition involving two or more agents, this is followed by the nested selection of other agents satisfying the enabling conditions of the corresponding ESSN transition.
